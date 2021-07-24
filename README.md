@@ -1,10 +1,27 @@
-This is a port of [react-app-rewire-babel-loader](https://github.com/dashed/react-app-rewire-babel-loader) to [`CRACO`](https://github.com/sharegate/craco) instead of [react-app-rewired](https://github.com/timarney/react-app-rewired). `react-app-rewired` is not being updated for version 2 of CRA, and I wanted to use the rewired babel loader with a solution designed for CRA 2.
+This is an updated fork of [`craco-babel-loader`](https://github.com/rjerue/craco-babel-loader) that works with the latest versions of [`@craco/craco`](https://github.com/gsoft-inc/craco) and [`create-react-app 4`](https://github.com/facebook/create-react-app#readme).
+___
 
-> Rewire [`babel-loader`](https://github.com/babel/babel-loader) loader in your [`create-react-app`](https://github.com/facebookincubator/create-react-app) project using [`CRACO`](https://github.com/sharegate/craco).
+> Rewire [`babel-loader`](https://github.com/babel/babel-loader) configuration in your [`create-react-app`](https://github.com/facebookincubator/create-react-app) project using [`@craco/craco`](https://github.com/sharegate/craco).
 
-Say there is an awesome library you found on npm that you want to use within your **un-ejected**  [`create-react-app`](https://github.com/facebookincubator/create-react-app) project, but unfortunately, it's published in ES6+ (since `node_modules` doesn't go through `babel-loader`), so you cannot *really* use it.
+Let's presume there is an awesome library you found on npm that you want to use within your **un-ejected**  [`create-react-app`](https://github.com/facebookincubator/create-react-app) project, but unfortunately, it's published in ES6+ or Typescript. Since `node_modules` doesn't go through `babel-loader`, you cannot *really* use it.
 
-However, with [`CRACO`](https://github.com/sharegate/craco) and this library, `craco-babel-loader`, you can use that awesome library you've found.
+Another common usecase is the one where the `React` app is part of a __monorepo__ project where multiple sibling packages reside.
+
+```
+/packages
+  |
+  --/react-app
+  |
+  --/shared
+  |
+  --/server
+```
+
+Let's suppose inside `/shared` directory there is some __Typescript__ code that both `/react-app` and `/server` import. The `/shared` directory will be treated as a dependency for `/react-app` and `/server`, and according to the monorepo setup, `/shared` will most likely be placed inside the `node_modules` directory of the other 2 packages.
+
+Running `/server` with `ts-node` for example will successfully allow the Typescript code from `/shared` to be used at runtime. This is not the case with `/react-app`.
+
+In order to obtain the same outcome in a [`create-react-app`](https://github.com/facebookincubator/create-react-app) project that runs with `react-scripts` (check package.json -> scripts), we need to override the [`create-react-app`](https://github.com/facebookincubator/create-react-app) __babel__ configuration. For that we can use [`@craco/craco`](https://github.com/gsoft-inc/craco) and this [`@craco/babel-loader`](https://github.com/AlexandruCalinica/-craco-babel-loader/) plugin.   
 
 See below for usage.
 
@@ -12,23 +29,22 @@ See below for usage.
 
 
 ```sh
-$ yarn add craco-babel-loader
+$ yarn add @craco/babel-loader
 # npm v5+
-$ npm install craco-babel-loader
+$ npm install @craco/babel-loader
 # before npm v5
-$ npm install --save craco-babel-loader
+$ npm install --save @craco/babel-loader
 ```
 
 ## Usage
 
 ```js
-// crago.config.js
-// see: https://github.com/sharegate/craco
+// craco.config.js
 
 const path = require("path");
 const fs = require("fs");
 
-const rewireBabelLoader = require("craco-babel-loader");
+const rewireBabelLoader = require("@craco/babel-loader");
 
 // helpers
 
@@ -55,16 +71,15 @@ Development
 ===========
 
 - `node.js` and `npm`. See: https://github.com/creationix/nvm#installation
-- `yarn`. See: https://yarnpkg.com/en/docs/install
 - `npm` dependencies. Run: `yarn install`
 
 ## Chores
 
-- Lint: `yarn run lint`
-- Prettier: `yarn run pretty`
-- Test: `yarn run test`
-- Pre-publish: `yarn run prepublish`
-- Build: `yarn run build`
+- Lint: `npm run lint`
+- Prettier: `npm run pretty`
+- Test: `npm run test`
+- Pre-publish: `npm run prepublish`
+- Build: `npm run build`
 
 License
 =======
