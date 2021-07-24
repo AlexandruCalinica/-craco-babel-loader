@@ -1,5 +1,5 @@
 {
-  "name": "@craco/babel-loader",
+  "name": "craco-babel-loader-plugin",
   "version": "1.0.0",
   "description": "Rewire `babel-loader` loader in your `create-react-app` project using `craco`.",
   "source": "src/index.ts",
