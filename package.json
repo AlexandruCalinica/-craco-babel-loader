@@ -1,16 +1,16 @@
 {
   "name": "craco-babel-loader-plugin",
   "version": "1.0.2",
-  "description": "Rewire `babel-loader` loader in your `create-react-app` project using `craco`.",
+  "description": "CRACO plugin for babel-loader",
   "source": "src/index.ts",
   "module": "dist/index.es.js",
   "main": "dist/index.js",
   "umd:main": "dist/index.umd.js",
-  "repository": "https://github.com/AlexandruCalinica/-craco-babel-loader",
+  "repository": "https://github.com/AlexandruCalinica/craco-babel-loader-plugin",
   "bugs": {
-    "url": "https://github.com/AlexandruCalinica/-craco-babel-loader/issues"
+    "url": "https://github.com/AlexandruCalinica/craco-babel-loader-plugin/issues"
   },
-  "homepage": "https://github.com/AlexandruCalinica/-craco-babel-loader",
+  "homepage": "https://github.com/AlexandruCalinica/craco-babel-loader-plugin",
   "author": {
     "name": "Alexandru Calinica",
     "email": "calinicaalexandru@gmail.com",
@@ -38,7 +38,7 @@
     "craco",
     "webpack",
     "@craco/craco",
-    "@craco/babel-loader",
+    "craco-babel-loader-plugin",
     "craco-babel-loader",
     "create-react-app"
   ],
