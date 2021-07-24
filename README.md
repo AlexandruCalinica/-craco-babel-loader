@@ -21,7 +21,7 @@ Let's suppose inside `/shared` directory there is some __Typescript__ code that 
 
 Running `/server` with `ts-node` for example will successfully allow the Typescript code from `/shared` to be used at runtime. This is not the case with `/react-app`.
 
-In order to obtain the same outcome in a [`create-react-app`](https://github.com/facebookincubator/create-react-app) project that runs with `react-scripts` (check package.json -> scripts), we need to override the [`create-react-app`](https://github.com/facebookincubator/create-react-app) __babel__ configuration. For that we can use [`@craco/craco`](https://github.com/gsoft-inc/craco) and this [`@craco/babel-loader`](https://github.com/AlexandruCalinica/-craco-babel-loader/) plugin.   
+In order to obtain the same outcome in a [`create-react-app`](https://github.com/facebookincubator/create-react-app) project that runs with `react-scripts` (check package.json -> scripts), we need to override the [`create-react-app`](https://github.com/facebookincubator/create-react-app) __babel__ configuration. For that we can use [`@craco/craco`](https://github.com/gsoft-inc/craco) and this [`craco-babel-loader-plugin`](https://github.com/AlexandruCalinica/-craco-babel-loader/) plugin.   
 
 See below for usage.
 
@@ -29,11 +29,11 @@ See below for usage.
 
 
 ```sh
-$ yarn add @craco/babel-loader
+$ yarn add craco-babel-loader-plugin
 # npm v5+
-$ npm install @craco/babel-loader
+$ npm install craco-babel-loader-plugin
 # before npm v5
-$ npm install --save @craco/babel-loader
+$ npm install --save craco-babel-loader-plugin
 ```
 
 ## Usage
@@ -44,7 +44,7 @@ $ npm install --save @craco/babel-loader
 const path = require("path");
 const fs = require("fs");
 
-const rewireBabelLoader = require("@craco/babel-loader");
+const rewireBabelLoader = require("craco-babel-loader-plugin");
 
 // helpers
 
@@ -75,10 +75,7 @@ Development
 
 ## Chores
 
-- Lint: `npm run lint`
 - Prettier: `npm run pretty`
-- Test: `npm run test`
-- Pre-publish: `npm run prepublish`
 - Build: `npm run build`
 
 License
