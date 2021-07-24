@@ -31,8 +31,7 @@
   "scripts": {
     "build": "microbundle --compress=false",
     "dev": "microbundle watch --compress=false",
-    "pretty": "prettier --write --tab-width 2 'src/**/*.ts' 'test/**/*.ts'",
-    "prepublish": "npm run build"
+    "pretty": "prettier --write --tab-width 2 'src/**/*.ts' 'test/**/*.ts'"
   },
   "keywords": [
     "babel-loader",
