@@ -1,6 +1,6 @@
 {
   "name": "craco-babel-loader-plugin",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "CRACO plugin for babel-loader",
   "source": "src/index.ts",
   "module": "dist/index.es.js",
