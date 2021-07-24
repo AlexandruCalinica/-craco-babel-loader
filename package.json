@@ -1,8 +1,8 @@
 {
-  "name": "craco-babel-loader",
+  "name": "@craco/babel-loader",
   "version": "0.1.4",
   "description": "Rewire `babel-loader` loader in your `create-react-app` project using `craco`.",
-  "source": "src/index.js",
+  "source": "src/index.ts",
   "module": "dist/index.es.js",
   "main": "dist/index.js",
   "umd:main": "dist/index.umd.js",
@@ -14,7 +14,7 @@
   },
   "license": "MIT",
   "eslintConfig": {
-    "parser": "babel-eslint",
+    "parser": "@babel/eslint-parser",
     "env": {
       "browser": true,
       "node": true,
@@ -27,10 +27,10 @@
   "scripts": {
     "build": "microbundle --compress=false",
     "dev": "microbundle watch --compress=false",
-    "pretty": "prettier --write --tab-width 4 'src/**/*.js' 'test/**/*.js'",
+    "pretty": "prettier --write --tab-width 2 'src/**/*.ts' 'test/**/*.ts'",
     "prepublish": "npm run lint && npm run test && npm run build",
     "lint": "eslint src test",
-    "flow": "flow"
+    "test": "echo 'run test'"
   },
   "keywords": [
     "babel-loader",
@@ -39,13 +39,12 @@
     "create-react-app"
   ],
   "dependencies": {
-    "@craco/craco": "^5.0.0"
+    "@craco/craco": "^5.9.0"
   },
   "devDependencies": {
-    "babel-eslint": "^8.0.3",
-    "eslint": "^4.13.1",
-    "flow-bin": "^0.61.0",
-    "microbundle": "^0.2.4",
-    "prettier": "^1.9.2"
+    "@babel/eslint-parser": "^7.14.7",
+    "eslint": "^7.31.0",
+    "microbundle": "^0.13.3",
+    "prettier": "^2.3.2"
   }
 }
